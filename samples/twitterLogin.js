@@ -2,11 +2,11 @@ const puppeteer = require('../modules/puppeteer');
 
 const pageUrl ='https://twitter.com/login';
 
-const username = process.env.TWITTER_USERNAME || ''
-const password = process.env.TWITTER_PASSWORD || ''
+const username = process.env.TWITTER_USERNAME || '';
+const password = process.env.TWITTER_PASSWORD || '';
 
 ;(async function run() {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch();
 
   const page = await browser.newPage();
 
@@ -21,5 +21,5 @@ const password = process.env.TWITTER_PASSWORD || ''
 
   await page.screenshot({ path: './screenshots/twitter_home.png', fullPage: false });
 
-  await browser.close()
+  await browser.close();
 }());

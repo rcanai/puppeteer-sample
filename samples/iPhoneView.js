@@ -5,7 +5,7 @@ const pageUrl ='https://github.co.jp/';
 ;(async function run() {
   const iPhone = puppeteer.getDevice('iPhone X')
 
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch();
 
   const page = await browser.newPage();
 
@@ -15,5 +15,5 @@ const pageUrl ='https://github.co.jp/';
 
   await page.screenshot({ path: './screenshots/iphone_view.png', fullPage: false });
 
-  await browser.close()
+  await browser.close();
 }());

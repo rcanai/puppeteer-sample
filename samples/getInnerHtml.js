@@ -3,7 +3,7 @@ const puppeteer = require('../modules/puppeteer');
 const pageUrl ='https://github.co.jp/';
 
 ;(async function run() {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch();
 
   const page = await browser.newPage();
 
@@ -18,5 +18,5 @@ const pageUrl ='https://github.co.jp/';
 
   console.log(res);
 
-  await browser.close()
+  await browser.close();
 }());
