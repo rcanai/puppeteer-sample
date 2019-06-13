@@ -5,6 +5,10 @@ const path = require('path');
 
 const pageUrl = 'https://www.yahoo.co.jp/';
 
+const directoryName = './downloadedImages/' + (new Date).getTime();
+
+fs.mkdirSync(directoryName);
+
 ;(async function run() {
   const browser = await puppeteer.launch();
 
@@ -19,7 +23,7 @@ const pageUrl = 'https://www.yahoo.co.jp/';
       const fileName = path.basename(url).substr(0, 10);
       const extension = path.extname(url);
       const buffer = await response.buffer();
-      fs.writeFileSync(`downloadedImages/image-${counter}-${fileName}${extension}`, buffer, 'base64');
+      fs.writeFileSync(`${directoryName}/image-${counter}-${fileName}${extension}`, buffer, 'base64');
       counter += 1;
     }
   });
