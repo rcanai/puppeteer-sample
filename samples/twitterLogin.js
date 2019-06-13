@@ -1,5 +1,7 @@
 const puppeteer = require('../modules/puppeteer');
 
+const pageUrl ='https://twitter.com/login';
+
 const username = process.env.TWITTER_USERNAME || ''
 const password = process.env.TWITTER_PASSWORD || ''
 
@@ -8,7 +10,7 @@ const password = process.env.TWITTER_PASSWORD || ''
 
   const page = await browser.newPage();
 
-  await page.goto('https://twitter.com/login');
+  await page.goto(pageUrl);
 
   await page.type('form input.js-username-field', username);
   await page.type('form input.js-password-field', password);
