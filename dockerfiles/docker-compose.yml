@@ -1,0 +1,13 @@
+version: "3"
+services:
+  node:
+    build:
+      context: ../
+      dockerfile: dockerfiles/node/Dockerfile
+    volumes:
+      - ../:/usr/local/src/node
+    tty: true
+    environment:
+      - "NODE_ENV=development"
+      - "TWITTER_USERNAME=${TWITTER_USERNAME}"
+      - "TWITTER_PASSWORD=${TWITTER_PASSWORD}"
