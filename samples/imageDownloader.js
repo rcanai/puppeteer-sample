@@ -5,7 +5,9 @@ const path = require('path');
 
 const pageUrl = 'https://www.yahoo.co.jp/';
 
-const directoryName = './downloadedImages/' + (new Date).getTime();
+const domainName = pageUrl.split('://')[1].split('/')[0];
+
+const directoryName = `./downloadedImages/${domainName}-` + (new Date).getTime();
 
 fs.mkdirSync(directoryName);
 
