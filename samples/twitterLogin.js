@@ -17,7 +17,7 @@ const password = process.env.TWITTER_PASSWORD || ''
 
   await page.click('form button.submit');
 
-  await page.waitForNavigation({timeout: 60000, waitUntil: "domcontentloaded"});
+  await page.waitForNavigation({timeout: 5000, waitUntil: "domcontentloaded"});
 
   await page.screenshot({ path: './screenshots/twitter_home.png', fullPage: false });
 
