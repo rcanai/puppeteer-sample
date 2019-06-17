@@ -5,7 +5,7 @@ const path = require('path');
 
 const pageUrl = 'https://www.yahoo.co.jp/';
 
-const domainName = pageUrl.split('://')[1].split('/')[0];
+const domainName = pageUrl.split('://')[1].split('/')[0].replace('www.', '');
 
 const directoryName = `./downloadedImages/${domainName}-` + (new Date).getTime();
 
@@ -23,8 +23,9 @@ fs.mkdirSync(directoryName);
     if (isImage) {
       const url = response.url();
       const fileName = path.basename(url).substr(0, 10);
-      const extension = path.extname(url);
+      const extension = path.extname(url).substr(0, 6);
       const buffer = await response.buffer();
+      console.log(contentType, url);
       fs.writeFileSync(`${directoryName}/image-${counter}-${fileName}${extension}`, buffer, 'base64');
       counter += 1;
     }

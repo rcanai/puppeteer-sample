@@ -34,7 +34,7 @@ $ dcf run node yarn run n sample.js
 
 ```
 $ dcf run node yarn run n samples/imageDownloader.js
-$ ls -l ./downloadedImages/ | grep ^d | xargs rm -rf
+$ ls -l ./downloadedImages | grep ^d | xargs rm -rf
 ```
 
 ### Twitter Login
