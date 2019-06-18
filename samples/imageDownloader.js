@@ -3,7 +3,7 @@ const puppeteer = require('../modules/puppeteer');
 const fs = require('fs');
 const path = require('path');
 
-const pageUrl = 'https://www.yahoo.co.jp/';
+const pageUrl = process.env.IMAGE_DOWNLOADER_URL ||  'https://www.yahoo.co.jp/';
 
 const domainName = pageUrl.split('://')[1].split('/')[0].replace('www.', '');
 

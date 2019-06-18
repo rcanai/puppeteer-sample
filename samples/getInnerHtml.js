@@ -1,6 +1,6 @@
 const puppeteer = require('../modules/puppeteer');
 
-const pageUrl ='https://github.co.jp/';
+const pageUrl = 'https://github.co.jp/';
 
 ;(async function run() {
   const browser = await puppeteer.launch();
