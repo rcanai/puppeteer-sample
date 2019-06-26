@@ -6,6 +6,7 @@
     "n": "node"
   },
   "dependencies": {
+    "archiver": "^3.0.0",
     "puppeteer": "^1.17.0"
   },
   "devDependencies": {}

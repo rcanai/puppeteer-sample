@@ -1,4 +1,5 @@
 const puppeteer = require('../modules/puppeteer');
+const archive = require('../modules/archive');
 
 const fs = require('fs');
 const path = require('path');
@@ -34,4 +35,6 @@ fs.mkdirSync(directoryName);
   await page.goto(pageUrl);
 
   await browser.close();
+
+  archive(directoryName)
 }());
