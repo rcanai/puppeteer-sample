@@ -1,14 +1,17 @@
 const puppeteer = require('../modules/puppeteer');
 const archive = require('../modules/archive');
+const utils = require('../modules/utils');
+const argv = require('../modules/argv')();
 
 const fs = require('fs');
 const path = require('path');
 
-const pageUrl = process.env.IMAGE_DOWNLOADER_URL ||  'https://www.yahoo.co.jp/';
+const pageUrl = argv[0] || process.env.IMAGE_DOWNLOADER_URL ||  'https://www.yahoo.co.jp/';
 
 const domainName = pageUrl.split('://')[1].split('/')[0].replace('www.', '');
 
-const directoryName = `./downloadedImages/${domainName}-` + (new Date).getTime();
+let directoryName = `./downloadedImages/${domainName}-` + (new Date).getTime();
+directoryName = utils.removeStr(directoryName);
 
 fs.mkdirSync(directoryName);
 
@@ -19,12 +22,12 @@ fs.mkdirSync(directoryName);
 
   let counter = 0;
   page.on('response', async (response) => {
-    const contentType = response._headers['content-type'];
+    const contentType = String(response._headers['content-type'] || '');
     const isImage = contentType.substr(0, 6) === 'image/';
     if (isImage) {
       const url = response.url();
-      const fileName = path.basename(url).substr(0, 10);
-      const extension = path.extname(url).substr(0, 6);
+      const fileName = utils.removeStr(path.basename(url).substr(0, 10));
+      const extension = utils.removeStr(path.extname(url).substr(0, 6));
       const buffer = await response.buffer();
       console.log(contentType, url);
       fs.writeFileSync(`${directoryName}/image-${counter}-${fileName}${extension}`, buffer, 'base64');
@@ -33,6 +36,7 @@ fs.mkdirSync(directoryName);
   });
 
   await page.goto(pageUrl);
+  await page.waitFor(5000);
 
   await browser.close();
 
