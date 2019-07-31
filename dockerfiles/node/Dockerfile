@@ -53,6 +53,6 @@ RUN unzip NotoSansCJKjp-hinted.zip && \
 WORKDIR /
 RUN rm -rf /noto
 
-ADD . /usr/local/src/node
+ADD . /usr/local/src/puppeteer-sample
 
-WORKDIR /usr/local/src/node
+WORKDIR /usr/local/src/puppeteer-sample

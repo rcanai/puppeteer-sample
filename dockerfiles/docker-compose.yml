@@ -5,7 +5,7 @@ services:
       context: ../
       dockerfile: dockerfiles/node/Dockerfile
     volumes:
-      - ../:/usr/local/src/node
+      - ../:/usr/local/src/puppeteer-sample
     tty: true
     environment:
       - "NODE_ENV=development"
